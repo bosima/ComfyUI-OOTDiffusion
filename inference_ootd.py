@@ -82,10 +82,9 @@ class OOTDiffusion:
             vae=AutoencoderKL.from_pretrained(
                 f"{MODEL_PATH}/vae",
                 torch_dtype=self.torch_dtype,
+                use_safetensors=False,  # 允许加载 .bin 文件
             ),
             torch_dtype=self.torch_dtype,
-            variant="fp16",
-            use_safetensors=True,
             safety_checker=None,
             requires_safety_checker=False,
         ).to(self.device)
